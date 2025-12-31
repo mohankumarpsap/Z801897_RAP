@@ -1,0 +1,43 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: { typeName: 'Booking Supplemnet',typeNamePlural: 'Booking Supplemnets' ,
+title : { value: 'BookingSupplementId' }
+}
+annotate entity ZSAP_MK_BookSuppl_Processor with
+{
+  @UI.facet: [
+  {
+  purpose: #STANDARD,
+  type: #IDENTIFICATION_REFERENCE,
+  label: 'Booking Supplement',
+  position: 20
+   }
+   ]
+
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10 }]
+  TravelId;
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+  BookingId;
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position:30 }]
+  BookingSupplementId;
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [{ position: 40 }]
+  SupplementId;
+  @UI.lineItem: [{ position: 50 }]
+  @UI.identification: [{ position: 50 }]
+  Price;
+  @UI.lineItem: [{ position: 60 }]
+  @UI.identification: [{ position: 60 }]
+  CurrencyCode;
+//  @UI.lineItem: [{ position: 70 }]
+//  @UI.identification: [{ position: 70 }]
+//  LastChangedAt;
+  /* Associations */
+  //  _Booking;
+  //  _Product;
+  //  _SupplementText;
+  //  _Travel;
+
+}

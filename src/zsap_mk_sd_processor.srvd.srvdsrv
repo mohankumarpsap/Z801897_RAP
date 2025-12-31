@@ -1,0 +1,12 @@
+@EndUserText.label: 'Processor Service Definition'
+define service ZSAP_MK_SD_PROCESSOR {
+  expose ZSAP_MK_TRavel_processor    as Travel;
+  expose ZSAP_MK_Booking_Processor   as Booking;
+  expose ZSAP_MK_BookSuppl_Processor as BookSupplement;
+  expose /DMO/I_Agency               as Agency;
+  expose /DMO/I_Carrier              as Carrier;
+  expose /DMO/I_Connection           as Connection;
+  expose /DMO/I_Customer             as Customer;
+  expose /DMO/I_Overall_Status_VH    as OverallStatus;
+  expose /DMO/I_Booking_Status_VH    as BookingStatus;
+}

@@ -1,0 +1,142 @@
+@Metadata.layer: #CORE
+@UI.headerInfo:
+{
+  typeName: 'Travel',
+  typeNamePlural: 'Travels',
+  title:{ value: 'TravelId' },
+  description:{ value: '_Customer.FirstName' }
+}
+annotate entity ZSAP_MK_TRavel_processor with
+{
+
+  @UI.facet: [
+  {
+  purpose: #HEADER,
+  label: 'Traveling Object Page',
+  position: 10   },
+
+  {
+  purpose: #HEADER,
+  type: #DATAPOINT_REFERENCE,
+  label: 'Price',
+  targetQualifier: 'travel',
+  position: 20
+  },
+
+
+  {
+  purpose: #HEADER,
+  type: #DATAPOINT_REFERENCE,
+  label: 'Status',
+  targetQualifier: 'status',
+  position: 30
+  },
+
+
+  {
+  purpose: #STANDARD,
+  type: #COLLECTION,
+  label: 'Adional Info',
+  position: 10,
+  id : 'super'
+   },
+
+   {
+   purpose: #STANDARD,
+   type: #IDENTIFICATION_REFERENCE,
+   position: 10,
+   label: 'More Info',
+   parentId: 'super'
+
+   },
+
+   {
+   purpose: #STANDARD,
+   type: #FIELDGROUP_REFERENCE,
+   targetQualifier: 'price',
+   label: 'Price Data',
+   parentId: 'super',
+   position: 20
+
+   },
+
+   {
+   purpose: #STANDARD,
+   type: #FIELDGROUP_REFERENCE,
+   label: 'Admin Data',
+   position: 30,
+   parentId: 'super',
+   targetQualifier: 'admin'
+
+   },
+
+   {
+   purpose: #STANDARD,
+   type: #LINEITEM_REFERENCE,
+   position: 20,
+   label: 'Booking',
+  //   parentId: 'super', --no bez it will be new collection Box
+   targetElement: '_Booking' --Association
+
+   }
+
+  ]
+
+
+  @UI.selectionField: [{ position: 10 }]
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10 }]
+  TravelId;
+  @UI.selectionField: [{ position: 20 }]
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+  AgencyId;
+  @UI.selectionField: [{ position: 30 }]
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 30 }]
+  CustomerId;
+
+
+  @UI.fieldGroup: [{ position: 10, qualifier: 'price' }]
+  BookingFee;
+  @UI.selectionField: [{ position: 40 }]
+  @UI.lineItem: [{ position: 40 }]
+  @UI.dataPoint: { qualifier: 'travel', title: 'Price' }
+  @UI.fieldGroup: [{ position: 20, qualifier: 'price' }]
+  TotalPrice;
+  @UI.lineItem: [{ position: 50 }]
+  @UI.fieldGroup: [{ position: 30, qualifier: 'price' }]
+
+  CurrencyCode;
+  //  Description;
+
+  //  @UI.fieldGroup: [{ qualifier: 'admin', position: 10, label: 'Created By' }]
+  //  CreatedBy;
+  //  @UI.fieldGroup: [{ qualifier: 'admin', position: 20, label: 'Created At' }]
+  //  CreatedAt;
+  //  @UI.fieldGroup: [{ qualifier: 'admin', position: 30 }]
+  //  LastChangedBy;
+  //  @UI.fieldGroup: [{ qualifier: 'admin', position: 40 }]
+  //  LastChangedAt;
+
+
+
+  @UI.fieldGroup: [{ qualifier: 'admin', position: 10 }]
+  BeginDate;
+  @UI.fieldGroup: [{ qualifier: 'admin', position: 20 }]
+  EndDate;
+  @UI.selectionField: [{ position: 50 }]
+  @UI.lineItem: [{ position: 60 , criticality: 'criticality' , importance: #HIGH }]
+  @UI.dataPoint: { qualifier: 'status', title: 'Status', criticality: 'criticality' }
+  @UI.fieldGroup: [{ position: 30, qualifier: 'admin' }]
+  OverallStatus;
+
+  /* Associations */
+  //  _Agency;
+  //  _Booking;
+  //  _Currency;
+  //  _Customer;
+  //  OverallStatus;
+  //  _OverallStatus;
+
+}

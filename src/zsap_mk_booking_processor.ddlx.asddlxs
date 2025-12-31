@@ -1,0 +1,76 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: { typeName: 'Booking',
+typeNamePlural: 'Bookings',
+title: { value: 'BookingId' },
+description:{ value: '_Carrier.AirlineID' }
+}
+annotate entity ZSAP_MK_Booking_Processor with
+{
+  @UI.facet: [
+
+   {
+   purpose: #STANDARD,
+   type: #FIELDGROUP_REFERENCE,
+   label: 'Bookings',
+   targetQualifier: 'booking',
+   position: 10
+
+   },
+
+   {
+   purpose: #STANDARD,
+   type: #LINEITEM_REFERENCE,
+   targetElement: '_BookSuppl',
+   label:'Booking Supplement',
+   position: 20
+   }
+
+   ]
+    //TravelId;
+  @UI.lineItem: [{ position: 10 }]
+  @UI.fieldGroup: [{ qualifier: 'booking', position: 10 }]
+  BookingId;
+  @UI.fieldGroup: [{ qualifier: 'booking', position: 20 }]
+  @UI.lineItem: [{ position: 20 }]
+  BookingDate;
+  @UI.lineItem: [{ position: 30 }]
+  @UI.fieldGroup: [{ qualifier: 'booking', position: 30 }]
+
+  CustomerId;
+  @UI.lineItem: [{ position: 40 }]
+  @UI.fieldGroup: [{ qualifier: 'booking', position: 40 }]
+
+  CarrierId;
+  @UI.lineItem: [{ position: 50 }]
+  @UI.fieldGroup: [{ qualifier: 'booking', position: 50 }]
+
+  ConnectionId;
+  @UI.lineItem: [{ position: 60 }]
+  @UI.fieldGroup: [{ qualifier: 'booking', position: 60 }]
+
+  FlightDate;
+  @UI.lineItem: [{ position: 70 }]
+  @UI.fieldGroup: [{ qualifier: 'booking', position: 70 }]
+
+  FlightPrice;
+  @UI.lineItem: [{ position: 80 }]
+  @UI.fieldGroup: [{ qualifier: 'booking', position: 80 }]
+
+  CurrencyCode;
+  @UI.lineItem: [{ position: 90 }]
+  @UI.fieldGroup: [{ qualifier: 'booking', position: 90 }]
+
+  BookingStatus;
+//  @UI.lineItem: [{ position: 100 }]
+//  @UI.fieldGroup: [{ qualifier: 'booking', position: 100 }]
+
+//  LastChangedAt;
+  /* Associations */
+  //  _BookingStatus;
+  //  _BookSuppl;
+  //  _Carrier;
+  //  _Connection;
+  //  _Customer;
+  //  _Travel;
+
+}

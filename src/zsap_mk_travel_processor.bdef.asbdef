@@ -1,0 +1,29 @@
+projection;
+strict ( 2 );
+
+define behavior for ZSAP_MK_TRavel_processor alias Travel
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _Booking { create; }
+}
+
+define behavior for ZSAP_MK_Booking_Processor alias Booking
+{
+  use update;
+  use delete;
+
+  use association _Travel;
+  use association _BookSuppl { create; }
+}
+
+define behavior for ZSAP_MK_BookSuppl_Processor alias BookSuppl
+{
+  use update;
+  use delete;
+
+  use association _Travel;
+  use association _Booking;
+}

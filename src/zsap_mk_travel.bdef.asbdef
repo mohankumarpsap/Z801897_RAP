@@ -1,0 +1,95 @@
+managed ; //implementation in class zbp_sap_mk_travel unique;
+strict ( 2 );
+
+define behavior for ZSAP_MK_TRavel alias Travel
+implementation in class zbp_sap_mk_travel unique
+persistent table /dmo/travel_m
+lock master
+authorization master ( instance )
+etag master LastChangedAt
+early numbering
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly : update ) TravelId;
+  //field ( numbering : managed ) TravelId;
+  field ( readonly : update ) StatusText, Criticality;
+  association _Booking { create; }
+
+  mapping for /dmo/travel_m
+  {
+    TravelId = travel_id;
+    AgencyId = agency_id;
+    CustomerId = customer_id;
+    BeginDate = begin_date;
+    EndDate = end_date;
+    BookingFee = booking_fee;
+    TotalPrice = total_price;
+    CurrencyCode = currency_code;
+    Description = description;
+    OverallStatus = overall_status;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LastChangedBy = last_changed_by;
+    LastChangedAt = last_changed_at;
+  }
+}
+
+define behavior for ZSAP_MK_Booking alias Booking
+implementation in class zbp_sap_mk_booking unique
+persistent table /dmo/booking_m
+lock dependent by _Travel
+authorization dependent by _Travel
+etag master LastChangedAt
+early numbering
+{
+  update;
+  delete;
+  field ( readonly : update ) TravelId, BookingId;
+  //field ( numbering : managed ) BookingId;
+  association _Travel;
+  association _BookSuppl { create; }
+
+  mapping for /dmo/booking_m
+  {
+    TravelId = travel_id;
+    BookingId = booking_id;
+    BookingDate = booking_date;
+    CustomerId = customer_id;
+    CarrierId = carrier_id;
+    ConnectionId = connection_id;
+    FlightDate = flight_date;
+    FlightPrice = flight_price;
+    CurrencyCode = currency_code;
+    BookingStatus = booking_status;
+    LastChangedAt = last_changed_at;
+  }
+}
+
+define behavior for ZSAP_MK_BookSuppl alias BookSuppl
+implementation in class zbp_sap_mk_BookSuppl unique
+persistent table /dmo/booksuppl_m
+lock dependent by _Travel
+authorization dependent by _Travel
+etag master LastChangedAt
+early numbering
+{
+  update;
+  delete;
+  field ( readonly : update ) TravelId, BookingId, BookingSupplementId;
+  //field ( numbering : managed ) BookingSupplementId;
+  association _Travel;
+  association _Booking;
+
+  mapping for /dmo/booksuppl_m
+  {
+    TravelId = travel_id;
+    BookingId = booking_id;
+    BookingSupplementId = booking_supplement_id;
+    SupplementId = supplement_id;
+    Price = price;
+    CurrencyCode = currency_code;
+    LastChangedAt = last_changed_at;
+  }
+}
