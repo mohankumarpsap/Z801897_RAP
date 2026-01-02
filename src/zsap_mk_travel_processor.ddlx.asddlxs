@@ -84,7 +84,7 @@ annotate entity ZSAP_MK_TRavel_processor with
 
 
   @UI.selectionField: [{ position: 10 }]
-  @UI.lineItem: [{ position: 10 }]
+  @UI.lineItem: [{ position: 10 , type : #FOR_ACTION, label: 'copyTravel', dataAction: 'copyTravel'}]
   @UI.identification: [{ position: 10 }]
   TravelId;
   @UI.selectionField: [{ position: 20 }]

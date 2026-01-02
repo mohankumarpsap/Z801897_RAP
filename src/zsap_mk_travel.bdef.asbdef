@@ -17,6 +17,8 @@ early numbering
   field ( readonly : update ) StatusText, Criticality;
   association _Booking { create; }
 
+  factory action copyTravel[1];
+
   mapping for /dmo/travel_m
   {
     TravelId = travel_id;

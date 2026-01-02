@@ -7,6 +7,8 @@ define behavior for ZSAP_MK_TRavel_processor alias Travel
   use update;
   use delete;
 
+  use action copyTravel;
+
   use association _Booking { create; }
 }
 

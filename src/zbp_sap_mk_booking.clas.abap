@@ -1,0 +1,5 @@
+CLASS zbp_sap_mk_booking DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zsap_mk_travel.
+ENDCLASS.
+
+CLASS zbp_sap_mk_booking IMPLEMENTATION.
+ENDCLASS.
