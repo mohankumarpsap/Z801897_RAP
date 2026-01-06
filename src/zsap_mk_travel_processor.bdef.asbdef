@@ -1,5 +1,6 @@
 projection;
-strict ( 2 );
+//strict ( 2 );
+use draft;
 
 define behavior for ZSAP_MK_TRavel_processor alias Travel
 {
@@ -9,7 +10,8 @@ define behavior for ZSAP_MK_TRavel_processor alias Travel
 
   use action copyTravel;
 
-  use association _Booking { create; }
+  use association _Booking { create; with draft; }
+
 }
 
 define behavior for ZSAP_MK_Booking_Processor alias Booking
@@ -26,6 +28,6 @@ define behavior for ZSAP_MK_BookSuppl_Processor alias BookSuppl
   use update;
   use delete;
 
-  use association _Travel;
-  use association _Booking;
+  use association _Travel { with draft; }
+  use association _Booking { with draft; }
 }

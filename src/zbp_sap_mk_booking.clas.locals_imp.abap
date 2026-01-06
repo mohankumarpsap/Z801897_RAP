@@ -18,6 +18,7 @@ CLASS lhc_Booking IMPLEMENTATION.
     ENTITY booking BY \_BookSuppl
     FROM CORRESPONDING #( entities )
     LINK DATA(booking_supplemnet).
+*    RESULT DATA(lt).
 
 
     LOOP AT entities ASSIGNING FIELD-SYMBOL(<Booking_suppl_group>) GROUP BY <Booking_suppl_group>-%tky.
