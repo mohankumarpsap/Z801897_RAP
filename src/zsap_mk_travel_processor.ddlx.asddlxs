@@ -6,6 +6,18 @@
   title:{ value: 'TravelId' },
   description:{ value: '_Customer.FirstName' }
 }
+@Search.searchable: true
+
+
+//Defining Multiple Views on a List Report Table - Single Table Mode
+//https://sapui5.hana.ondemand.com/sdk/#/topic/0d390fed360c4c58a0f0619338938de1.html
+@UI.selectionVariant: [
+{ qualifier: 'All', text: 'all' },
+{ qualifier: 'Open', text: 'Open', filter: ' OverallStatus eq O ' },
+{ qualifier: 'Accepted', text: 'Approved', filter: ' OverallStatus eq A ' },
+{ qualifier: 'Cancelled', text: 'Cancelled', filter: ' OverallStatus eq N ' }
+]
+
 annotate entity ZSAP_MK_TRavel_processor with
 {
 
@@ -86,14 +98,18 @@ annotate entity ZSAP_MK_TRavel_processor with
   @UI.selectionField: [{ position: 10 }]
   @UI.lineItem: [{ position: 10 , type : #FOR_ACTION, label: 'copyTravel', dataAction: 'copyTravel'}]
   @UI.identification: [{ position: 10 }]
+    @Search.defaultSearchElement: true
+  @Search.fuzzinessThreshold: 0.7
   TravelId;
   @UI.selectionField: [{ position: 20 }]
   @UI.lineItem: [{ position: 20 }]
   @UI.identification: [{ position: 20 }]
+  @Search.defaultSearchElement: true
   AgencyId;
   @UI.selectionField: [{ position: 30 }]
   @UI.lineItem: [{ position: 30 }]
   @UI.identification: [{ position: 30 }]
+    @Search.defaultSearchElement: true
   CustomerId;
 
 
@@ -129,6 +145,8 @@ annotate entity ZSAP_MK_TRavel_processor with
   @UI.lineItem: [{ position: 60 , criticality: 'criticality' , importance: #HIGH }]
   @UI.dataPoint: { qualifier: 'status', title: 'Status', criticality: 'criticality' }
   @UI.fieldGroup: [{ position: 30, qualifier: 'admin' }]
+  @UI.textArrangement: #TEXT_ONLY
+    @Search.defaultSearchElement: true
   OverallStatus;
 
   /* Associations */
